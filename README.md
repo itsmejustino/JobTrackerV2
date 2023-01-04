@@ -1,12 +1,28 @@
-# Create T3 App
+# Job Tracker App V2
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a refactored version of Job Tracker for tracking applications written with the T-3 Stack. This code base has been refactored to include authentication along with tracking of jobs.
 
-## What's next? How do I make an app with this?
+## Use
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+If you would like to try out the simplist form of this application you can fork this repository and follow the steps for setting up the T-3 Stack below. 
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Use
+
+If you would like to try out the simplist form of this application you can fork this repository and follow the steps for setting up the T-3 Stack below. 
+
+## Contact
+Want to contact me for more questions regarding this porject? Feel free to reach out to me or create a Pull Request to edit this current project with the info below.
+
+Github Username:
+https://github.com/itsmejustino
+
+or
+
+Email me at:
+justindortiz@me.com
+
+
+# Technolgies Used
 
 - [Next.js](https://nextjs.org)
 - [NextAuth.js](https://next-auth.js.org)
@@ -23,6 +39,7 @@ To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the fo
 
 You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
 
-## How do I deploy this?
+## Deployed Code
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+### Coming Soon!
+

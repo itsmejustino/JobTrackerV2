@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import React, { useState, useReducer } from "react";
-import { trpc } from "../utils/trpc";
+import { api } from "../utils/api";
 import JobList from "./components/Joblist";
 
 //1. Capture input in State object. [DONE]
@@ -12,8 +12,8 @@ import JobList from "./components/Joblist";
 const Home: NextPage = () => {
 
   // Mutations and Queries for jobs to the DB
-  const createJobMutation = trpc.jobs.addJob.useMutation();
-  const queryJobs = trpc.jobs.getAllJobs.useQuery();
+  const createJobMutation = api.jobs.addJob.useMutation();
+  const queryJobs = api.jobs.getAllJobs.useQuery();
   const [, forceUpdate] = useReducer(x => x + 1, 0);
 
   //loading component using isLoading attribute from from trpc 

@@ -1,10 +1,7 @@
 import React, { type FC } from 'react';
-import { useRouter } from "next/router";
-import  useEffect  from "next/router";
-import useState  from "next/router";
 import { useReducer } from 'react';
-import { trpc } from "../../utils/trpc";
-import { any } from 'zod';
+import { api } from "../../utils/api";
+
 // interface JobListProps {
 //   id: string;
 //   jobName: string;
@@ -15,8 +12,8 @@ import { any } from 'zod';
 
 const JobList: FC = () => {
   const [, forceUpdate] = useReducer(x => x + 1, 0);
-  const deleteJobMutation = trpc.jobs.deleteJob.useMutation().mutateAsync;
-  const queryJobList = trpc.jobs.getAllJobs.useQuery();
+  const deleteJobMutation = api.jobs.deleteJob.useMutation().mutateAsync;
+  const queryJobList = api.jobs.getAllJobs.useQuery();
 
   const displayJobs =  queryJobList.data?.map(x => {
     return (

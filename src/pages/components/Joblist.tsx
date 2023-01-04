@@ -1,23 +1,13 @@
 import React, { type FC } from 'react';
-import { useReducer } from 'react';
 import { api } from "../../utils/api";
 
-// interface JobListProps {
-//   id: string;
-//   jobName: string;
-//   company: string;
-//   platform: string;
-//   appliedon: string;
-// }
-
 const JobList: FC = () => {
-  const [, forceUpdate] = useReducer(x => x + 1, 0);
   const deleteJobMutation = api.jobs.deleteJob.useMutation().mutateAsync;
   const queryJobList = api.jobs.getAllJobs.useQuery();
 
   const displayJobs =  queryJobList.data?.map(x => {
     return (
-      <div onChange={forceUpdate} key={x.id} id={x.id} className="flex flex-row items-center gap-2 justify-center mb-2">
+      <div key={x.id} id={x.id} className="flex flex-row items-center gap-2 justify-center mb-2">
         <ul className="flex flex-row items-center gap-2">
           <li>Job: {x.jobName}</li>
           <li>Company: {x.company}</li>
@@ -27,11 +17,8 @@ const JobList: FC = () => {
         <button
         
           onClick={() => {
-            // e.target.dispatchEvent
-            
             const deleteKey:any= document.getElementById(`${x.id}`)?.id;
             deleteJobMutation({id: deleteKey});
-            // forceUpdate;
           }}
           type='button'
           className="flex flex-row items-center gap-2 bg-blue-400 text-sm rounded-md transition p-2 hover:bg-blue-500"

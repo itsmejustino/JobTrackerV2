@@ -4,11 +4,8 @@ This is a refactored version of Job Tracker for tracking applications written wi
 
 ## Use
 
-If you would like to try out the simplist form of this application you can fork this repository and follow the steps for setting up the T-3 Stack below. 
+If you would like to try out this application you can visit the deployed code at: Coming Soon!
 
-## Use
-
-If you would like to try out the simplist form of this application you can fork this repository and follow the steps for setting up the T-3 Stack below. 
 
 ## Contact
 Want to contact me for more questions regarding this porject? Feel free to reach out to me or create a Pull Request to edit this current project with the info below.

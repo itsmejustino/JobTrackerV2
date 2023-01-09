@@ -33,8 +33,7 @@ const Home: NextPage = () => {
   }
 
   const getInput = (e: React.FormEvent) => {
-    // e.preventDefault();
-    // console.log()
+    e.preventDefault();
     const target =  e.target as typeof e.target & {
         jobName: {value:string};
         organization: {value:string};

@@ -139,13 +139,15 @@ export default Home;
 
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
-  const myImage = sessionData && sessionData.user?.image
+  const myImage:any = sessionData && sessionData.user?.image
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
       </p>
-      {sessionData && <img src="{{myImage}}"/>}
+      {sessionData && (
+        <Image src={myImage} alt="user avatar" className="rounded-full w-20 h-20" />
+      )}
       <button
         className="rounded-full bg-grey/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => signOut() : () => signIn()}

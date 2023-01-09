@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Image from 'next/image'
 
 //1. Capture input in State object. [DONE]
 //2. Use object in State to Mutate to database. [DONE]
@@ -20,7 +19,6 @@ const Home: NextPage = () => {
 
 
   //loading component using isLoading attribute from from trpc 
-  // const querySomeJobs = trpc.jobs.getSpecificJobs.useQuery({ id, jobName, company, platform, appliedon })
   // if(!jobsData || isLoading) return <p> loading...</p>
 
  

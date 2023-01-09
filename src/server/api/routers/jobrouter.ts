@@ -43,12 +43,12 @@ export const jobRouter = createTRPCRouter({
                 }
             });
         }),
-    getAllJobs: publicProcedure
+    getAllJobs: protectedProcedure
         .query(({ ctx }) => {
             return ctx.prisma.job.findMany();
         }),
 
-    getSpecificJobs: publicProcedure.input(
+    getSpecificJobs: protectedProcedure.input(
         z.string()).query(({
             ctx,
             input }) => {

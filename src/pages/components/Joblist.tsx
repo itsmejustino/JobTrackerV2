@@ -1,13 +1,29 @@
-import React, { type FC } from 'react';
+import React, { type FC , useEffect} from 'react';
 import { api } from "../../utils/api";
 
 const JobList: FC = () => {
   const deleteJobMutation = api.jobs.deleteJob.useMutation().mutateAsync;
   const queryJobList = api.jobs.getAllJobs.useQuery();
 
-  const displayJobs =  queryJobList.data?.map(x => {
+  useEffect(() => {
+    if (queryJobList.error) {
+      console.error(queryJobList.error);
+    }
+  }, [queryJobList.error]);
+
+  const deleteJob = (id: string): void => {
+    deleteJobMutation({ id }).then(() => {
+      // trigger a re-render of the component
+      queryJobList.refetch();
+    });
+  };
+  
+
+  const displayJobs = queryJobList.data?.map( x => {
     return (
+      
       <div key={x.id} id={x.id} className="flex flex-row items-center gap-2 justify-center mb-2">
+       
         <ul className="flex flex-row items-center gap-2">
           <li>Job: {x.jobName}</li>
           <li>Company: {x.company}</li>
@@ -17,8 +33,8 @@ const JobList: FC = () => {
         <button
         
           onClick={() => {
-            const deleteKey:any= document.getElementById(`${x.id}`)?.id;
-            deleteJobMutation({id: deleteKey});
+            const deleteKey: any = document.getElementById(`${x.id}`)?.id;
+            deleteJob(deleteKey)
           }}
           type='button'
           className="flex flex-row items-center gap-2 bg-blue-400 text-sm rounded-md transition p-2 hover:bg-blue-500"
@@ -34,11 +50,9 @@ const JobList: FC = () => {
 
   })
 
-
-
   return (
     <ul>
-      {displayJobs}
+       {displayJobs}
     </ul>
   );
 };

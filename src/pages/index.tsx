@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import React, { useState, useReducer } from "react";
-import { Router, useRouter } from 'next/router';
+import React from "react";
+import { useRouter } from 'next/router';
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -25,6 +25,7 @@ const Home: NextPage = () => {
  
 
   const createJob = async (jobName: string, company: string, platform: string, appliedon: string): Promise<void> => {
+   
     createJobMutation.mutate({
       jobName,
       company,
@@ -50,7 +51,7 @@ const Home: NextPage = () => {
     const platformText = target.platform.value
     const appliedOnText = target.appliedOn.value
     createJob(jobText, orgText, platformText, appliedOnText).then(()=> {
-    router.push('/')
+    router.push('/');
     })
   }
 

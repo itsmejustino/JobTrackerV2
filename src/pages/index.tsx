@@ -21,6 +21,8 @@ const Home: NextPage = () => {
   // const querySomeJobs = trpc.jobs.getSpecificJobs.useQuery({ id, jobName, company, platform, appliedon })
   // if(!jobsData || isLoading) return <p> loading...</p>
 
+ 
+
   const createJob = (jobName: string, company: string, platform: string, appliedon: string) => {
     createJobMutation.mutate({
       jobName,
@@ -30,12 +32,20 @@ const Home: NextPage = () => {
     });
   }
 
-  const getInput = (event: React.FormEvent) => {
-    // console.log(event.target.jobName.value)
-    const jobText = event.target.jobName.value
-    const orgText = event.target.organization.value
-    const platformText = event.target.platform.value
-    const appliedOnText = event.target.appliedOn.value
+  const getInput = (e: React.FormEvent) => {
+    // e.preventDefault();
+    // console.log()
+    const target =  e.target as typeof e.target & {
+        jobName: {value:string};
+        organization: {value:string};
+        platform: {value: string};
+        appliedOn: {value: string};
+    }
+    
+    const jobText = target.jobName.value
+    const orgText = target.organization.value
+    const platformText = target.platform.value
+    const appliedOnText = target.appliedOn.value
     createJob(jobText, orgText, platformText, appliedOnText)
   }
 

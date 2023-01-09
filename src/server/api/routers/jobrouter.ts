@@ -5,7 +5,7 @@ import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
 
 export const jobRouter = createTRPCRouter({
     // The syntax is identical to creating queries
-    addJob: publicProcedure
+    addJob: protectedProcedure
         .input(
             z.object({
                 jobName: z.string(),
@@ -29,7 +29,7 @@ export const jobRouter = createTRPCRouter({
             // Here return the information from the addJob procedure
 
         }),
-    deleteJob: publicProcedure.input(
+    deleteJob: protectedProcedure.input(
         z.object({
             id: z.string(),
         })

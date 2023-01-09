@@ -31,12 +31,12 @@ const Home: NextPage = () => {
   }
 
   const getInput = (event: React.FormEvent) => {
-    console.log(event.target.jobName.value)
-    const jobText = event.target.jobName.value
-    const orgText = event.target.organization.value
-    const platformText = event.target.platform.value
-    const appliedOnText = event.target.appliedOn.value
-    createJob(jobText, orgText, platformText, appliedOnText)
+    // console.log(event.target.jobName.value)
+    // const jobText = event.target.jobName.value
+    // const orgText = event.target.organization.value
+    // const platformText = event.target.platform.value
+    // const appliedOnText = event.target.appliedOn.value
+    // createJob(jobText, orgText, platformText, appliedOnText)
   }
 
   return (

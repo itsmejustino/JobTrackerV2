@@ -144,6 +144,7 @@ const AuthShowcase: React.FC = () => {
       <p className="text-center text-2xl text-white">
         {sessionData && <span>Logged in as {sessionData.user?.name}</span> && <img src="{{sessionData.user?.image}}"/>}
       </p>
+      {sessionData && <img src="{{sessionData.user?.image}}"/>}
       <button
         className="rounded-full bg-grey/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => signOut() : () => signIn()}

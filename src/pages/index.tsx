@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import React, { useState, useReducer } from "react";
+import { Router, useRouter } from 'next/router';
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -11,7 +12,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 //4. Map db to create a list of input. [In Progress]
 
 const Home: NextPage = () => {
-
+  const router = useRouter();
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
 
@@ -23,7 +24,7 @@ const Home: NextPage = () => {
 
  
 
-  const createJob = (jobName: string, company: string, platform: string, appliedon: string) => {
+  const createJob = async (jobName: string, company: string, platform: string, appliedon: string): Promise<void> => {
     createJobMutation.mutate({
       jobName,
       company,
@@ -32,7 +33,10 @@ const Home: NextPage = () => {
     });
   }
 
-  const getInput = (e: React.FormEvent) => {
+  
+  
+
+  const getInput = (e: React.FormEvent): void => {
     e.preventDefault();
     const target =  e.target as typeof e.target & {
         jobName: {value:string};
@@ -45,7 +49,9 @@ const Home: NextPage = () => {
     const orgText = target.organization.value
     const platformText = target.platform.value
     const appliedOnText = target.appliedOn.value
-    createJob(jobText, orgText, platformText, appliedOnText)
+    createJob(jobText, orgText, platformText, appliedOnText).then(()=> {
+    router.push('/')
+    })
   }
 
   return (

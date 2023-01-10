@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -16,43 +16,39 @@ const Home: NextPage = () => {
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
 
-
-
-  //loading component using isLoading attribute from from trpc 
+  //loading component using isLoading attribute from from trpc
   // if(!jobsData || isLoading) return <p> loading...</p>
-
- 
-
-  const createJob = async (jobName: string, company: string, platform: string, appliedon: string): Promise<void> => {
-   
+  const createJob = async (
+    jobName: string,
+    company: string,
+    platform: string,
+    appliedon: string
+  ): Promise<void> => {
     createJobMutation.mutate({
       jobName,
       company,
       platform,
       appliedon,
     });
-  }
-
-  
-  
+  };
 
   const getInput = (e: React.FormEvent): void => {
-    router.push('/')
-    const target =  e.target as typeof e.target & {
-        jobName: {value:string};
-        organization: {value:string};
-        platform: {value: string};
-        appliedOn: {value: string};
-    }
-    
-    const jobText = target.jobName.value
-    const orgText = target.organization.value
-    const platformText = target.platform.value
-    const appliedOnText = target.appliedOn.value
-    createJob(jobText, orgText, platformText, appliedOnText).then(()=> {
-    router.push('/');
-    })
-  }
+    router.push("/");
+    const target = e.target as typeof e.target & {
+      jobName: { value: string };
+      organization: { value: string };
+      platform: { value: string };
+      appliedOn: { value: string };
+    };
+
+    const jobText = target.jobName.value;
+    const orgText = target.organization.value;
+    const platformText = target.platform.value;
+    const appliedOnText = target.appliedOn.value;
+    createJob(jobText, orgText, platformText, appliedOnText).then(() => {
+      router.push("/");
+    });
+  };
 
   return (
     <>
@@ -65,70 +61,108 @@ const Home: NextPage = () => {
         <AuthShowcase />
       </div>
 
-      <main className="mx-auto my-12 nav-w-3xl  bg-slate-300 p-12">
-
-        <div className="flex justify-around p-3 gap-3 bg-slate-400">
+      <main className="nav-w-3xl mx-auto my-12  bg-slate-300 p-12">
+        <div className="flex justify-around gap-3 bg-slate-400 p-3">
           <h2 className="text-2xl font-semibold">Applications Tracker</h2>
           <div className="flex flex-row">
-            <button type='button' className="flex flex-row items-center gap-2 bg-blue-400 text-sm rounded-md transition p-2 hover:bg-blue-500">Save Applications List<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-
+            <button
+              type="button"
+              className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
+            >
+              Save Applications List
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
             </button>
           </div>
         </div>
-        <form className="flex flex-wrap flex-row gap-4 mt-20 justify-center items-end" onSubmit={getInput}>
+        <form
+          className="mt-20 flex flex-row flex-wrap items-end justify-center gap-4"
+          onSubmit={getInput}
+        >
           <div className="flex flex-col gap-0">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Name</label>
+            <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              Job Name
+            </label>
             <input
-              name='jobName'
-              type="text" id="small-input"
-              className="block w-100 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              name="jobName"
+              type="text"
+              id="small-input"
+              className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+            />
           </div>
 
           <div className="flex flex-col gap-0">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Organization</label>
+            <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              Organization
+            </label>
             <input
-              name='organization'
+              name="organization"
               type="text"
               id="small-input"
-              className="block w-100 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+            />
           </div>
 
           <div className="flex flex-col gap-0">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Platform</label>
+            <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              Platform
+            </label>
             <input
-              name='platform'
+              name="platform"
               type="text"
               id="small-input"
-              className="block w-100 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+            />
           </div>
 
-
           <div className="flex flex-col gap-0">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Applied On-Date</label>
+            <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              Applied On-Date
+            </label>
             <input
-              name='appliedOn'
+              name="appliedOn"
               type="text"
               id="small-input"
-              className="block w-100 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+            />
           </div>
 
           <button
-            type='submit'
-            className="flex flex-row items-center gap-2 bg-blue-400 text-sm rounded-md transition p-2 hover:bg-blue-500" >Add Job <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            type="submit"
+            className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
+          >
+            Add Job{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
             </svg>
           </button>
         </form>
-
-
       </main>
 
-      {
-        <JobList />
-      }
-
+      {<JobList />}
     </>
   );
 };
@@ -137,17 +171,21 @@ export default Home;
 
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
-  const myImage:any = sessionData && sessionData.user?.image
+  const myImage: any = sessionData && sessionData.user?.image;
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
       </p>
       {sessionData && (
-        <img src={myImage} alt="user avatar" className="rounded-full w-20 h-20" />
+        <img
+          src={myImage}
+          alt="user avatar"
+          className="h-20 w-20 rounded-full"
+        />
       )}
       <button
-        className="rounded-full bg-grey/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+        className="bg-grey/10 rounded-full px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => signOut() : () => signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}

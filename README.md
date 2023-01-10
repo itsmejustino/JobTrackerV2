@@ -4,7 +4,7 @@ This is a refactored version of Job Tracker for tracking applications written wi
 
 ## Use
 
-If you would like to try out this application you can visit the deployed code at: Coming Soon!
+If you would like to try out this application you can visit the deployed code at: https://job-tracker-v2.vercel.app/
 
 
 ## Contact

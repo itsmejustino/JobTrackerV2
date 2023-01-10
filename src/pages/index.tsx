@@ -22,13 +22,17 @@ const Home: NextPage = () => {
     jobName: string,
     company: string,
     platform: string,
-    appliedon: string
+    appliedon: string,
+    interview: string,
+    followup: string,
   ): Promise<void> => {
     createJobMutation.mutate({
       jobName,
       company,
       platform,
       appliedon,
+      interview,
+      followup,
     });
   };
 
@@ -39,13 +43,17 @@ const Home: NextPage = () => {
       organization: { value: string };
       platform: { value: string };
       appliedOn: { value: string };
+      interviewDate: { value: string };
+      followUp: { value: string };
     };
 
     const jobText = target.jobName.value;
     const orgText = target.organization.value;
     const platformText = target.platform.value;
-    const appliedOnText = target.appliedOn.value;
-    createJob(jobText, orgText, platformText, appliedOnText).then(() => {
+    const appliedOnDate = target.appliedOn.value;
+    const interviewDate = target.appliedOn.value;
+    const followUpBool = target.followUp.value;
+    createJob(jobText, orgText, platformText, appliedOnDate, interviewDate, followUpBool).then(() => {
       router.push("/");
     });
   };
@@ -133,8 +141,31 @@ const Home: NextPage = () => {
             </label>
             <input
               name="appliedOn"
-              type="text"
+              type="date"
               id="small-input"
+              className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+            />
+          </div>
+
+          <div className="flex flex-col gap-0">
+            <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              Interview Date
+            </label>
+            <input
+              name="interviewDate"
+              type="date"
+              id="small-input"
+              className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+            />
+          </div>
+          <div className="flex flex-col gap-0">
+            <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              Follow Up
+            </label>
+            <input
+              name="followUp"
+              type="date"
+              id="default-checkbox"
               className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
             />
           </div>

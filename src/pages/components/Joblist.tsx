@@ -30,6 +30,9 @@ const JobList: FC = () => {
           <li>Company: {x.company}</li>
           <li>Platform: {x.platform}</li>
           <li>Applied Date: {x.appliedon}</li>
+          <li>Interview Date: {x.interview}</li>
+          <li>Follow Up: {x.followup}</li>
+        
         </ul>
         <button
           onClick={() => {

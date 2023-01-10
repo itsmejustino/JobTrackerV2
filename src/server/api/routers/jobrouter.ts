@@ -4,30 +4,34 @@ import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
 
 export const jobRouter = createTRPCRouter({
   // The syntax is identical to creating queries
-  addJob: protectedProcedure
+  addJob: publicProcedure
     .input(
       z.object({
         jobName: z.string(),
         company: z.string(),
         platform: z.string(),
         appliedon: z.string(),
+        interview: z.string(),
+        followup: z.string(),
       })
     )
     .mutation(({ ctx, input }) => {
       const { prisma } = ctx;
-      const { jobName, company, platform, appliedon } = input;
+      const { jobName, company, platform, appliedon, interview, followup } = input;
       return prisma.job.create({
         data: {
           jobName,
           company,
           platform,
           appliedon,
+          interview,
+          followup,
         },
       });
 
       // Here return the information from the addJob procedure
     }),
-  deleteJob: protectedProcedure
+  deleteJob: publicProcedure
     .input(
       z.object({
         id: z.string(),
@@ -42,7 +46,7 @@ export const jobRouter = createTRPCRouter({
         },
       });
     }),
-  getAllJobs: protectedProcedure.query(({ ctx }) => {
+  getAllJobs: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.job.findMany();
   }),
 

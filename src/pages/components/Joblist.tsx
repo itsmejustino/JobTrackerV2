@@ -1,5 +1,6 @@
 import React, { type FC, useEffect } from "react";
 import { api } from "../../utils/api";
+import moment from "moment";
 
 const JobList: FC = () => {
   const deleteJobMutation = api.jobs.deleteJob.useMutation().mutateAsync;
@@ -23,15 +24,15 @@ const JobList: FC = () => {
       <div
         key={x.id}
         id={x.id}
-        className="mb-2 flex flex-row items-center justify-center gap-2 bg-slate-500"
+        className="mb-2 m-10 rounded-2xl flex flex-row items-center content-center justify-center gap-2  bg-slate-500 "
       >
-        <ul className="flex flex-row items-center gap-2">
-          <li>Job: {x.jobName}</li>
-          <li>Company: {x.company}</li>
-          <li>Platform: {x.platform}</li>
-          <li>Applied Date: {x.appliedon}</li>
-          <li>Interview Date: {x.interview}</li>
-          <li>Follow Up: {x.followup}</li>
+        <ul className="flex gap-4" >
+          <li className="wrap-column max-w-sm p-2  bg-indigo-50 rounded-m m-2">Job: {x.jobName}</li>
+          <li className="wrap-column max-w-sm bg-indigo-50 p-2 rounded-sm m-2">Company: {x.company}</li>
+          <li  className="wrap-column max-w-sm p-2  bg-indigo-50 rounded-sm m-2">Platform: {x.platform}</li>
+          <li  className="wrap-column max-w-sm p-2  bg-indigo-50 rounded-sm m-2">Applied Date: {moment(x.appliedon).format('LL')}</li>
+          <li  className="wrap-column max-w-sm p-2  bg-indigo-50 rounded-sm m-2">Interview Date: {moment(x.interview).format('LL')}</li>
+          <li  className="wrap-column max-w-sm p-2  bg-indigo-50 rounded-sm m-2">Next Follow Up Date: {moment(x.followup).format('LL')}</li>
         
         </ul>
         <button
@@ -63,7 +64,7 @@ const JobList: FC = () => {
     );
   });
 
-  return <ul>{displayJobs}</ul>;
+  return <section >{displayJobs}</section>;
 };
 
 export default JobList;

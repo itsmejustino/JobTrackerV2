@@ -24,37 +24,40 @@ const JobList: FC = () => {
       <div
         key={x.id}
         id={x.id}
-        className=" mb-2 gap-2 rounded-2xl w-auto m-auto bg-slate-500 shadow-lg-black"
+        className=" shadow-lg-black m-auto mb-2 w-auto gap-2 rounded-2xl bg-slate-500"
       >
-      <div  className="flex flex-col m-4 p-2">
-        <ul className="flex flex-col flex-wrap align-center gap-4 p-2 bg-slate-800 rounded-xl shadow-md">
-          <li className="m-2 max-w-sm rounded-xl bg-indigo-50 p-2">
-            <span className="font-bold">Job:</span> {x.jobName}
-          </li>
-          <li className=" m-2 max-w-sm rounded-xl bg-indigo-50 p-2">
-          <span className="font-bold">Company:</span> {x.company}
-          </li>
-          <li className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
-          <span className="font-bold">Platform:</span> {x.platform}
-          </li>
-          <li className="m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
-          <span className="font-bold">Applied Date:</span> {moment(x.appliedon).format("LL")}
-          </li>
-          <li className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
-          <span className="font-bold">Interview Date:</span> {moment(x.interview).format("LL")}
-          </li>
-          <li className="m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
-          <span className="font-bold">Next Follow Up Date: </span>{moment(x.followup).format("LL")}
-          </li>
-        </ul>
-       
+        <div className="m-4 flex flex-col p-2">
+          <ul className="align-center flex flex-col flex-wrap gap-4 rounded-xl bg-slate-800 p-2 shadow-md">
+            <li className="m-2 max-w-sm rounded-xl bg-indigo-50 p-2">
+              <span className="font-bold">Job:</span> {x.jobName}
+            </li>
+            <li className=" m-2 max-w-sm rounded-xl bg-indigo-50 p-2">
+              <span className="font-bold">Company:</span> {x.company}
+            </li>
+            <li className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
+              <span className="font-bold">Platform:</span> {x.platform}
+            </li>
+            <li className="m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
+              <span className="font-bold">Applied Date:</span>{" "}
+              {moment(x.appliedon).format("LL")}
+            </li>
+            <li className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
+              <span className="font-bold">Interview Date:</span>{" "}
+              {moment(x.interview).format("LL")}
+            </li>
+            <li className="m-2 max-w-sm  rounded-xl bg-indigo-50 p-2">
+              <span className="font-bold">Next Follow Up Date: </span>
+              {moment(x.followup).format("LL")}
+            </li>
+          </ul>
+
           <button
             onClick={() => {
               const deleteKey: any = document.getElementById(`${x.id}`)?.id;
               deleteJob(deleteKey);
             }}
             type="button"
-            className="flex flex-row justify-center gap-2 rounded-md shadow-md bg-blue-400 p-2 m-4 text-sm transition hover:bg-blue-500"
+            className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
             key={x.id}
           >
             Delete
@@ -73,7 +76,6 @@ const JobList: FC = () => {
               />
             </svg>
           </button>
-        
         </div>
       </div>
     );

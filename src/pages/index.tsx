@@ -13,12 +13,16 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
   const router = useRouter();
+  const { data: sessionData } = useSession();
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
+  const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
+  // const {data:usersId} = api.jobs.getSpecificJobs.useQuery(sessionData?.user.id)
 
   //loading component using isLoading attribute from from trpc
   // if(!jobsData || isLoading) return <p> loading...</p>
   const createJob = async (
+    userId: string,
     jobName: string,
     company: string,
     platform: string,
@@ -27,6 +31,7 @@ const Home: NextPage = () => {
     followup: string,
   ): Promise<void> => {
     createJobMutation.mutate({
+      userId,
       jobName,
       company,
       platform,
@@ -37,7 +42,8 @@ const Home: NextPage = () => {
   };
 
   const getInput = (e: React.FormEvent): void => {
-    router.push("/");
+    // router.push("/");
+    const  userId = sessionData?.user?.id 
     const target = e.target as typeof e.target & {
       jobName: { value: string };
       organization: { value: string };
@@ -46,14 +52,14 @@ const Home: NextPage = () => {
       interviewDate: { value: string };
       followUp: { value: string };
     };
-
+    
     const jobText = target.jobName.value;
     const orgText = target.organization.value;
     const platformText = target.platform.value;
     const appliedOnDate = target.appliedOn.value;
     const interviewDate = target.appliedOn.value;
     const followUpBool = target.followUp.value;
-    createJob(jobText, orgText, platformText, appliedOnDate, interviewDate, followUpBool).then(() => {
+    createJob(userId ,jobText, orgText, platformText, appliedOnDate, interviewDate, followUpBool).then(() => {
       router.push("/");
     });
   };
@@ -102,6 +108,19 @@ const Home: NextPage = () => {
           className="mt-20 flex flex-row flex-wrap items-end justify-center gap-4"
           onSubmit={getInput}
         >
+
+          <div className="flex flex-col gap-0">
+            <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              Job Name
+            </label>
+            <input
+              name="userId"
+              type="text"
+              id="small-input"
+              className="w-100 block rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+            />
+          </div>
+
           <div className="flex flex-col gap-0">
             <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
               Job Name
@@ -194,7 +213,29 @@ const Home: NextPage = () => {
               />
             </svg>
           </button>
+         
         </form>
+        <button
+            type="button"
+            onClick={()=>console.log(queryUserJobList.data?.forEach(x=>x.userId))}
+            className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
+          >
+            Query Job{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+          </button>
       </main>
       <section className="flex flex-wrap flex-row place-items-center gap-4" >
       {<JobList/>}

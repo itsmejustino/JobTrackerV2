@@ -13,6 +13,8 @@ datasource db {
 
 model Job {
   id        String   @id @default(cuid())
+  userId    String 
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   jobName   String
   company   String
   platform  String
@@ -56,6 +58,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  jobs          Job[]
   accounts      Account[]
   sessions      Session[]
 }

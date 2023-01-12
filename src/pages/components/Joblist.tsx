@@ -5,6 +5,7 @@ import moment from "moment";
 const JobList: FC = () => {
   const deleteJobMutation = api.jobs.deleteJob.useMutation().mutateAsync;
   const queryJobList = api.jobs.getAllJobs.useQuery();
+  
 
   useEffect(() => {
     if (queryJobList.error) {
@@ -22,7 +23,7 @@ const JobList: FC = () => {
   const displayJobs = queryJobList.data?.map((x) => {
     return (
       <div
-        key={x.id}
+        key={x.userId}
         id={x.id}
         className=" shadow-lg-black m-auto mb-2 w-auto gap-2 rounded-2xl bg-slate-500"
       >

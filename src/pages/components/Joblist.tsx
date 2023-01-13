@@ -58,7 +58,7 @@ const JobList: FC = () => {
 
           <button
             onClick={() => {
-              const deleteKey: any = document.getElementById(`${x.id}`)?.id;
+              const deleteKey: any = document.getElementById(`${x.userId}`)?.id;
               deleteJob(deleteKey);
             }}
             type="button"

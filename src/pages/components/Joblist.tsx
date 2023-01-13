@@ -24,7 +24,6 @@ const JobList: FC = () => {
   const userId = sessionData?.user?.id;
   if (!userId) return <p>Sign in to use the app.</p>
   if (
-    userId ||
     !queryUserJobList.data ||
     queryUserJobList.error ||
     queryUserJobList.isLoading

@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const { data: sessionData } = useSession();
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
- 
+  const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
   
   
   const createJob = async (
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
     const interviewDate = target.appliedOn.value;
     const followUpBool = target.followUp.value;
     createJob(userId ,jobText, orgText, platformText, appliedOnDate, interviewDate, followUpBool).then(() => {
-
+      queryUserJobList.refetch();
       router.push("/");
     });
   };

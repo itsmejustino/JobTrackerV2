@@ -43,7 +43,6 @@ const Home: NextPage = () => {
   };
 
   const getInput = (e: React.FormEvent): void => {
-    // router.push("/");
     const userId = sessionData?.user?.id 
     if (!userId) return;
     const target = e.target as typeof e.target & {
@@ -205,7 +204,7 @@ const Home: NextPage = () => {
           </button>
         </form>
       </main>
-      <section className="flex flex-wrap flex-row place-items-center gap-4" >
+      <section className="flex justify-center" >
    
       {<JobList/>}
       </section>

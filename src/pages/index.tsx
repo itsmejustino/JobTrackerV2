@@ -192,7 +192,7 @@ const Home: NextPage = () => {
             type="submit"
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
             onClick={() =>
-              !sessionData?.user && (
+              sessionData && !sessionData.user? (
                 <div
                   id="toast-danger"
                   className="mb-4 flex w-full max-w-xs items-center rounded-lg bg-white p-4 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400"

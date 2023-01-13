@@ -197,82 +197,83 @@ const JobList: FC = () => {
                 />
               </svg>
             </button>
-            {showEditInput && (<div className="m-4 flex flex-col p-2">
-              <span className="font-bold">Job: </span>{" "}
-              <input
-                type="text"
-                name="jobName"
-                value={formData.jobName}
-                onChange={(event) =>
-                  handleChange(event as React.ChangeEvent<HTMLInputElement>)
-                }
-              />
-              <span className="font-bold">Company: </span>{" "}
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={(event) =>
-                  handleChange(event as React.ChangeEvent<HTMLInputElement>)
-                }
-              />
-              <span className="font-bold">Platform: </span>{" "}
-              <input
-                type="text"
-                name="platform"
-                value={formData.platform}
-                onChange={(event) =>
-                  handleChange(event as React.ChangeEvent<HTMLInputElement>)
-                }
-              />
-              <span className="font-bold">Applied Date: </span>{" "}
-              <input
-                type="date"
-                name="appliedon"
-                value={formData.appliedon}
-                onChange={(event) =>
-                  handleChange(event as React.ChangeEvent<HTMLInputElement>)
-                }
-              />
-              <span className="font-bold">Interview Date:</span>{" "}
-              <input
-                type="date"
-                name="interview"
-                value={formData.interview}
-                onChange={(event) =>
-                  handleChange(event as React.ChangeEvent<HTMLInputElement>)
-                }
-              />
-              <span className="font-bold">Follow Up Date:</span>{" "}
-              <input
-                type="date"
-                name="followup"
-                value={formData.followup}
-                onChange={(event) =>
-                  handleChange(event as React.ChangeEvent<HTMLInputElement>)
-                }
-              />
-              <button
-                onClick={() => {
-                  editJob(
-                    x.id,
-                    userId,
-                    formData.jobName,
-                    formData.company,
-                    formData.platform,
-                    formData.appliedon,
-                    formData.interview,
-                    formData.followup
-                  );
-                }}
-                type="button"
-                className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
-                key={x.id}
-              >
-                Save
-             
-              </button>
-            </div>)}
+            {showEditInput && (
+              <div className="m-4 flex flex-col p-2">
+                <span className="font-bold">Job: </span>{" "}
+                <input
+                  type="text"
+                  name="jobName"
+                  value={formData.jobName}
+                  onChange={(event) =>
+                    handleChange(event as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <span className="font-bold">Company: </span>{" "}
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={(event) =>
+                    handleChange(event as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <span className="font-bold">Platform: </span>{" "}
+                <input
+                  type="text"
+                  name="platform"
+                  value={formData.platform}
+                  onChange={(event) =>
+                    handleChange(event as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <span className="font-bold">Applied Date: </span>{" "}
+                <input
+                  type="date"
+                  name="appliedon"
+                  value={formData.appliedon}
+                  onChange={(event) =>
+                    handleChange(event as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <span className="font-bold">Interview Date:</span>{" "}
+                <input
+                  type="date"
+                  name="interview"
+                  value={formData.interview}
+                  onChange={(event) =>
+                    handleChange(event as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <span className="font-bold">Follow Up Date:</span>{" "}
+                <input
+                  type="date"
+                  name="followup"
+                  value={formData.followup}
+                  onChange={(event) =>
+                    handleChange(event as React.ChangeEvent<HTMLInputElement>)
+                  }
+                />
+                <button
+                  onClick={() => {
+                    editJob(
+                      x.id,
+                      userId,
+                      formData.jobName,
+                      formData.company,
+                      formData.platform,
+                      formData.appliedon,
+                      formData.interview,
+                      formData.followup
+                    );
+                  }}
+                  type="button"
+                  className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
+                  key={x.id}
+                >
+                  Save
+                </button>
+              </div>
+            )}
 
             <button
               onClick={() => {
@@ -283,7 +284,6 @@ const JobList: FC = () => {
               key={x.id}
             >
               Edit
-             
             </button>
           </div>
         </div>

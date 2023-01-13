@@ -23,7 +23,8 @@ const JobList: FC = () => {
 
   const userId = sessionData?.user?.id;
   if (!userId || !queryUserJobList.data || queryUserJobList.error || queryUserJobList.isLoading) return <div className="flex justify-center"> <p className="flex justify-center">Loading job list...</p> </div>;
-  if (userId && queryUserJobList.isLoading) return <div className="flex justify-center"> <p className="flex justify-center">Loading job list...</p> </div>;
+  if (userId && queryUserJobList.isLoading) return <div className="flex justify-center"> <p className="flex justify-center">  <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+</svg>Loading job list...</p> </div>;
 
   const displayJobs = queryUserJobList.data
     ?.filter((job) => job.userId === userId)

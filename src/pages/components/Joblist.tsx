@@ -277,7 +277,7 @@ const JobList: FC = () => {
 
             <button
               onClick={() => {
-                handleEditClick();
+                handleEditClick;
               }}
               type="button"
               className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"

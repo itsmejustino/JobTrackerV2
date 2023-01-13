@@ -225,6 +225,7 @@ const JobList: FC = () => {
               <div className="m-4 flex flex-col p-2">
                 <span className="font-bold">Job: </span>{" "}
                 <input
+                className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"
                   type="text"
                   name="jobName"
                   value={formData.jobName}
@@ -234,6 +235,7 @@ const JobList: FC = () => {
                 />
                 <span className="font-bold">Company: </span>{" "}
                 <input
+                className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"
                   type="text"
                   name="company"
                   value={formData.company}
@@ -243,6 +245,7 @@ const JobList: FC = () => {
                 />
                 <span className="font-bold">Platform: </span>{" "}
                 <input
+                className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"
                   type="text"
                   name="platform"
                   value={formData.platform}
@@ -252,6 +255,7 @@ const JobList: FC = () => {
                 />
                 <span className="font-bold">Applied Date: </span>{" "}
                 <input
+                className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"
                   type="date"
                   name="appliedon"
                   value={formData.appliedon}
@@ -261,6 +265,7 @@ const JobList: FC = () => {
                 />
                 <span className="font-bold">Interview Date:</span>{" "}
                 <input
+                className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"
                   type="date"
                   name="interview"
                   value={formData.interview}
@@ -270,6 +275,7 @@ const JobList: FC = () => {
                 />
                 <span className="font-bold">Follow Up Date:</span>{" "}
                 <input
+                className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"
                   type="date"
                   name="followup"
                   value={formData.followup}

@@ -197,8 +197,9 @@ const JobList: FC = () => {
                 />
               </svg>
             </button>
-            <div onChange={handleEditClick}>
-            <span className="font-bold">Job: </span> <input
+            <div className="m-4 flex flex-col p-2" onChange={handleEditClick}>
+              <span className="font-bold">Job: </span>{" "}
+              <input
                 type="text"
                 name="jobName"
                 value={formData.jobName}
@@ -206,7 +207,8 @@ const JobList: FC = () => {
                   handleChange(event as React.ChangeEvent<HTMLInputElement>)
                 }
               />
-            <span className="font-bold">Company: </span>  <input
+              <span className="font-bold">Company: </span>{" "}
+              <input
                 type="text"
                 name="company"
                 value={formData.company}
@@ -214,7 +216,8 @@ const JobList: FC = () => {
                   handleChange(event as React.ChangeEvent<HTMLInputElement>)
                 }
               />
-           <span className="font-bold">Platform: </span>   <input
+              <span className="font-bold">Platform: </span>{" "}
+              <input
                 type="text"
                 name="platform"
                 value={formData.platform}
@@ -222,7 +225,8 @@ const JobList: FC = () => {
                   handleChange(event as React.ChangeEvent<HTMLInputElement>)
                 }
               />
-          <span className="font-bold">Applied Date: </span>   <input
+              <span className="font-bold">Applied Date: </span>{" "}
+              <input
                 type="date"
                 name="appliedon"
                 value={formData.appliedon}
@@ -230,7 +234,8 @@ const JobList: FC = () => {
                   handleChange(event as React.ChangeEvent<HTMLInputElement>)
                 }
               />
-          <span className="font-bold">Interview Date:</span>    <input
+              <span className="font-bold">Interview Date:</span>{" "}
+              <input
                 type="date"
                 name="interview"
                 value={formData.interview}
@@ -238,7 +243,8 @@ const JobList: FC = () => {
                   handleChange(event as React.ChangeEvent<HTMLInputElement>)
                 }
               />
-          <span className="font-bold">Follow Up Date:</span>    <input
+              <span className="font-bold">Follow Up Date:</span>{" "}
+              <input
                 type="date"
                 name="followup"
                 value={formData.followup}
@@ -246,7 +252,6 @@ const JobList: FC = () => {
                   handleChange(event as React.ChangeEvent<HTMLInputElement>)
                 }
               />
-
               <button
                 onClick={() => {
                   editJob(
@@ -284,7 +289,7 @@ const JobList: FC = () => {
 
             <button
               onClick={() => {
-                handleEditClick
+                handleEditClick;
               }}
               type="button"
               className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"

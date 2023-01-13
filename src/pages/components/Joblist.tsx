@@ -174,6 +174,29 @@ const JobList: FC = () => {
             </ul>
 
             <button
+              onClick={handleEditClick}
+              type="button"
+              className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
+              key={x.id}
+            >
+              Edit
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"
+                />
+              </svg>
+            </button>
+
+            <button
               onClick={() => {
                 deleteJob(x.id);
               }}
@@ -265,24 +288,30 @@ const JobList: FC = () => {
                       formData.interview,
                       formData.followup
                     );
+                    {handleEditClick}
                   }}
                   type="button"
                   className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
                   key={x.id}
                 >
                   Save
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                    />
+                  </svg>
                 </button>
               </div>
             )}
-
-            <button
-              onClick={handleEditClick}
-              type="button"
-              className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
-              key={x.id}
-            >
-              Edit
-            </button>
           </div>
         </div>
       );

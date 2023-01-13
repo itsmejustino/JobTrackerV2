@@ -43,7 +43,8 @@ const Home: NextPage = () => {
 
   const getInput = (e: React.FormEvent): void => {
     // router.push("/");
-    const  userId = sessionData?.user?.id 
+    const userId = sessionData?.user?.id 
+    if (!userId) return;
     const target = e.target as typeof e.target & {
       jobName: { value: string };
       organization: { value: string };

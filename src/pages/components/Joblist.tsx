@@ -22,16 +22,17 @@ const JobList: FC = () => {
   };
 
   const userId = sessionData?.user?.id;
+  if (!userId) return <p>Sign in to use the app.</p>
   if (
-    !userId ||
+    userId ||
     !queryUserJobList.data ||
     queryUserJobList.error ||
     queryUserJobList.isLoading
   )
     return (
-      <div className="flex justify-center bg-slate-700">
+      <div className="flex justify-center bg-slate-700 p-3 rounded-md">
       {" "}
-      <p className="flex justify-center">
+      <p className="flex justify-center text-white font-semibold">
         <svg
           version="1.1"
           id="L6"

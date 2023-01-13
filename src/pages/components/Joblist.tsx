@@ -21,7 +21,12 @@ const JobList: FC = () => {
       queryUserJobList.refetch();
     });
   };
+
+  
   const userId = sessionData?.user?.id;
+
+  if (queryUserJobList.isLoading) return <p>Loading job list...</p>;
+  
 
   const displayJobs = queryUserJobList.data?.filter(job => job.userId === userId).map((x) => {
     return (

@@ -22,7 +22,8 @@ const JobList: FC = () => {
   };
 
   const userId = sessionData?.user?.id;
-  if (userId && queryUserJobList.isLoading) return <p>Loading job list...</p>;
+  if (!userId || !queryUserJobList.data || queryUserJobList.error || queryUserJobList.isLoading) return null;
+  if (userId && queryUserJobList.isLoading) return <p className="flex justify-center">Loading job list...</p>;
 
   const displayJobs = queryUserJobList.data
     ?.filter((job) => job.userId === userId)

@@ -197,7 +197,7 @@ const JobList: FC = () => {
                 />
               </svg>
             </button>
-            <div className="m-4 flex flex-col p-2" onChange={handleEditClick}>
+            {showEditInput && (<div className="m-4 flex flex-col p-2">
               <span className="font-bold">Job: </span>{" "}
               <input
                 type="text"
@@ -272,7 +272,7 @@ const JobList: FC = () => {
                 Save
              
               </button>
-            </div>
+            </div>)}
 
             <button
               onClick={() => {

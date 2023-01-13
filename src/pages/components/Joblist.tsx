@@ -1,11 +1,14 @@
 import React, { type FC, useEffect } from "react";
 import { api } from "../../utils/api";
 import moment from "moment";
+import { useSession } from "next-auth/react";
 
 const JobList: FC = () => {
+  const { data: sessionData } = useSession();
   const deleteJobMutation = api.jobs.deleteJob.useMutation().mutateAsync;
   const queryJobList = api.jobs.getAllJobs.useQuery();
-  
+  const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
+ 
 
   useEffect(() => {
     if (queryJobList.error) {
@@ -19,8 +22,9 @@ const JobList: FC = () => {
       queryJobList.refetch();
     });
   };
+  const userId = sessionData?.user?.id;
 
-  const displayJobs = queryJobList.data?.map((x) => {
+  const displayJobs = queryUserJobList.data?.filter(job => job.userId === userId).map((x) => {
     return (
       <div
         key={x.userId}
@@ -82,7 +86,11 @@ const JobList: FC = () => {
     );
   });
 
-  return <>{displayJobs}</>;
+  return !userId ? <><p> Please login or signup to view your job list </p></> : (
+    <>
+      {displayJobs}
+    </>
+ );
 };
 
 export default JobList;

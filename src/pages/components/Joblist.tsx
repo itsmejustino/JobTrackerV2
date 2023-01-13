@@ -74,6 +74,7 @@ const JobList: FC = () => {
       followup,
     }).then(() => {
       queryUserJobList.refetch();
+      handleEditClick();
     });
   };
 

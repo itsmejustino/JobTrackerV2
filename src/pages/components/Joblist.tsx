@@ -25,10 +25,11 @@ const JobList: FC = () => {
   
   const userId = sessionData?.user?.id;
 
-  if (userId && queryUserJobList.isLoading) return <p>Loading job list...</p>;
+
   
 
   const displayJobs = queryUserJobList.data?.filter(job => job.userId === userId).map((x) => {
+    if (userId && queryUserJobList.isLoading) return <p>Loading job list...</p>; 
     return (
       <div
         key={x.userId}

@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const { data: sessionData } = useSession();
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
-
+  const [loading, setLoading] = useState(false);
   
   
   const createJob = async (
@@ -30,6 +30,7 @@ const Home: NextPage = () => {
     interview: string,
     followup: string,
   ): Promise<void> => {
+    setLoading(true);
     createJobMutation.mutate({
       userId,
       jobName,
@@ -61,6 +62,7 @@ const Home: NextPage = () => {
     const interviewDate = target.appliedOn.value;
     const followUpBool = target.followUp.value;
     createJob(userId ,jobText, orgText, platformText, appliedOnDate, interviewDate, followUpBool).then(() => {
+      setLoading(false);
       router.push("/");
     });
   };
@@ -204,6 +206,7 @@ const Home: NextPage = () => {
         </form>
       </main>
       <section className="flex flex-wrap flex-row place-items-center gap-4" >
+      {loading && <div className="loading">Loading...</div>}
       {<JobList/>}
       </section>
     </>

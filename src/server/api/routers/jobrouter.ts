@@ -48,6 +48,38 @@ export const jobRouter = createTRPCRouter({
         },
       });
     }),
+    editJob: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        userId: z.string(),
+        jobName: z.string(),
+        company: z.string(),
+        platform: z.string(),
+        appliedon: z.string(),
+        interview: z.string(),
+        followup: z.string(),
+      })
+    )
+    .mutation(({ ctx, input }) => {
+      const { prisma } = ctx;
+      const { id, userId, jobName, company, platform, appliedon, interview, followup } = input;
+      return prisma.job.update({
+        where: {
+          id
+        },
+        data: {
+          userId,
+          jobName,
+          company,
+          platform,
+          appliedon,
+          interview,
+          followup,
+        },
+      });
+    }),
+ 
   getAllJobs: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.job.findMany();
   }),

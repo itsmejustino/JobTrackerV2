@@ -239,7 +239,7 @@ const Home: NextPage = () => {
                     </svg>
                   </button>
                 </div>
-              )
+              ): null
             }
           >
             Add Job{" "}

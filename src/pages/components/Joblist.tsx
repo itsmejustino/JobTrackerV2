@@ -22,8 +22,9 @@ const JobList: FC = () => {
   };
 
   const userId = sessionData?.user?.id;
-  if (!userId) return <p>Sign in to use the app.</p>
+  if (!userId) return <p>You have to sign in to use the app.</p>
   if (
+    !userId ||
     !queryUserJobList.data ||
     queryUserJobList.error ||
     queryUserJobList.isLoading
@@ -144,16 +145,8 @@ const JobList: FC = () => {
       );
     });
 
-  return !userId ? (
-    <div className="align-content-center flex flex-row justify-center">
-      <p className="flex flex-row justify-center">
-        {" "}
-        Please login or signup to view your job list{" "}
-      </p>
-    </div>
-  ) : (
-    <>{displayJobs}</>
-  );
+  return <>{displayJobs}</>
+
 };
 
 export default JobList;

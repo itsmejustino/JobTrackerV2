@@ -187,6 +187,7 @@ const JobList: FC = () => {
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
+                className="h-6 w-6"
               >
                 <path
                   strokeLinecap="round"
@@ -288,7 +289,6 @@ const JobList: FC = () => {
                       formData.interview,
                       formData.followup
                     );
-                    {handleEditClick}
                   }}
                   type="button"
                   className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
@@ -302,6 +302,7 @@ const JobList: FC = () => {
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
+                    className="h-6 w-6"
                   >
                     <path
                       strokeLinecap="round"

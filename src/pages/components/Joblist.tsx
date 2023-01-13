@@ -6,20 +6,19 @@ import { useSession } from "next-auth/react";
 const JobList: FC = () => {
   const { data: sessionData } = useSession();
   const deleteJobMutation = api.jobs.deleteJob.useMutation().mutateAsync;
-  const queryJobList = api.jobs.getAllJobs.useQuery();
   const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
  
 
   useEffect(() => {
-    if (queryJobList.error) {
-      console.error(queryJobList.error);
+    if (queryUserJobList.error) {
+      console.error(queryUserJobList.error);
     }
-  }, [queryJobList.error]);
+  }, [queryUserJobList.error]);
 
   const deleteJob = (id: string): void => {
     deleteJobMutation({ id }).then(() => {
       // trigger a re-render of the component
-      queryJobList.refetch();
+      queryUserJobList.refetch();
     });
   };
   const userId = sessionData?.user?.id;
@@ -58,8 +57,8 @@ const JobList: FC = () => {
 
           <button
             onClick={() => {
-              const deleteKey: any = document.getElementById(`${x.userId}`)?.id;
-              deleteJob(deleteKey);
+              // const deleteKey: any = document.getElementById(`${x.id}`)?.id;
+              deleteJob(x.id);
             }}
             type="button"
             className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"

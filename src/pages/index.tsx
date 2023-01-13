@@ -205,7 +205,7 @@ const Home: NextPage = () => {
         </form>
         <button
             type="button"
-            onClick={()=>console.log(queryUserJobList.data?.forEach(x=>x.userId))}
+            onClick={()=>console.log(queryUserJobList.data?.map(x=>x.userId))}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
             Query Job{" "}

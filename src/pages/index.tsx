@@ -203,7 +203,7 @@ const Home: NextPage = () => {
           </button>
          
         </form>
-        <button
+        {/* <button
             type="button"
             onClick={()=>console.log(queryUserJobList.data?.map(x=>x.userId))}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
@@ -223,7 +223,7 @@ const Home: NextPage = () => {
                 d="M12 4.5v15m7.5-7.5h-15"
               />
             </svg>
-          </button>
+          </button> */}
       </main>
       <section className="flex flex-wrap flex-row place-items-center gap-4" >
       {<JobList/>}

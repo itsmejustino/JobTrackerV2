@@ -19,8 +19,7 @@ const Home: NextPage = () => {
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
   const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
-  
-  
+
   const createJob = async (
     userId: string,
     jobName: string,
@@ -28,9 +27,8 @@ const Home: NextPage = () => {
     platform: string,
     appliedon: string,
     interview: string,
-    followup: string,
+    followup: string
   ): Promise<void> => {
-    
     createJobMutation.mutate({
       userId,
       jobName,
@@ -43,7 +41,7 @@ const Home: NextPage = () => {
   };
 
   const getInput = (e: React.FormEvent): void => {
-    const userId = sessionData?.user?.id 
+    const userId = sessionData?.user?.id;
     if (!userId) return;
     const target = e.target as typeof e.target & {
       jobName: { value: string };
@@ -53,14 +51,22 @@ const Home: NextPage = () => {
       interviewDate: { value: string };
       followUp: { value: string };
     };
-    
+
     const jobText = target.jobName.value;
     const orgText = target.organization.value;
     const platformText = target.platform.value;
     const appliedOnDate = target.appliedOn.value;
     const interviewDate = target.appliedOn.value;
     const followUpBool = target.followUp.value;
-    createJob(userId ,jobText, orgText, platformText, appliedOnDate, interviewDate, followUpBool).then(() => {
+    createJob(
+      userId,
+      jobText,
+      orgText,
+      platformText,
+      appliedOnDate,
+      interviewDate,
+      followUpBool
+    ).then(() => {
       queryUserJobList.refetch();
       router.push("/");
     });
@@ -74,15 +80,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="flex justify-between rounded-b-xl items-end gap-2 bg-slate-400 p-2 content-center"> 
-      <h2 className="text-2xl m-4 font-semibold">Applications Tracker</h2>
-      <div className="flex m-2 flex-wrap flex-col content-center">
-        <AuthShowcase />
-      </div>
+      <header className="flex content-center items-end justify-between gap-2 rounded-b-xl bg-slate-400 p-2">
+        <h2 className="m-4 text-2xl font-semibold">Applications Tracker</h2>
+        <div className="m-2 flex flex-col flex-wrap content-center">
+          <AuthShowcase />
+        </div>
       </header>
       <main className="nav-w-3xl mx-auto my-12  bg-slate-300 p-12">
         <div className="flex justify-around gap-3 bg-slate-400 p-3">
-         
           <div className="flex flex-row">
             <button
               type="button"
@@ -90,17 +95,18 @@ const Home: NextPage = () => {
             >
               Save Applications List
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
                 stroke="currentColor"
+                strokeWidth={1.5}
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
                 className="h-6 w-6"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M12 4.5v15m7.5-7.5h-15"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                 />
               </svg>
             </button>
@@ -204,10 +210,7 @@ const Home: NextPage = () => {
           </button>
         </form>
       </main>
-      <section className="flex justify-center" >
-   
-      {<JobList/>}
-      </section>
+      <section className="flex justify-center">{<JobList />}</section>
     </>
   );
 };
@@ -230,7 +233,7 @@ const AuthShowcase: React.FC = () => {
         />
       )}
       <button
-        className="bg-slate-700 rounded-full px-10 py-3 font-semibold text-white no-underline transition hover:bg-slate/20"
+        className="hover:bg-slate/20 rounded-full bg-slate-700 px-10 py-3 font-semibold text-white no-underline transition"
         onClick={sessionData ? () => signOut() : () => signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}

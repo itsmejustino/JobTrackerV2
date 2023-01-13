@@ -86,7 +86,7 @@ const JobList: FC = () => {
     );
   });
 
-  return !userId ? <><p className='flex flex-row justify-center'> Please login or signup to view your job list </p></> : (
+  return !userId ? <div className='flex flex-row justify-center align-content-center'><p className='flex flex-row justify-center'> Please login or signup to view your job list </p></div> : (
     <>
       {displayJobs}
     </>

@@ -19,7 +19,12 @@ const JobList: FC = () => {
   const userId = sessionData?.user?.id;
 
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
+  const handleVisibleJobList = () =>{
+     setIsVisible(!isVisible);
+  }
+  
   const handleEditClick = (jobId:string) => {
     setSelectedJobId(jobId);
   };
@@ -172,7 +177,8 @@ const JobList: FC = () => {
             </ul>
 
             <button
-               onClick={() => handleEditClick(x.id)}
+               onClick={() => {handleEditClick(x.id);
+                  handleVisibleJobList();}}
               type="button"
               className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
               key={x.id}
@@ -219,7 +225,7 @@ const JobList: FC = () => {
                 />
               </svg>
             </button>
-            {selectedJobId === x.id && (
+            {isVisible && selectedJobId === x.id && (
               <form className="m-4 flex flex-col p-2" >
                 <span className="font-bold">Job: </span>{" "}
                 <input

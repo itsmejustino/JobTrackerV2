@@ -220,7 +220,7 @@ const JobList: FC = () => {
               </svg>
             </button>
             {isVisible && (
-              <div className="m-4 flex flex-col p-2">
+              <div className="m-4 flex flex-col p-2" key={x.id}>
                 <span className="font-bold">Job: </span>{" "}
                 <input
                   className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"

@@ -210,7 +210,7 @@ const Home: NextPage = () => {
           </button>
         </form>
       </main>
-      <section className="flex justify-around gap-2">{<JobList />}</section>
+      <section className="flex justify-around flex-wrap gap-2">{<JobList />}</section>
     </>
   );
 };

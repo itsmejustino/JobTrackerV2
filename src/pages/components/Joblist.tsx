@@ -77,9 +77,10 @@ const JobList: FC = () => {
       appliedon,
       interview,
       followup,
-    }).then(() => {
+    }).then(() => { 
+      handleVisibleJobList();
       queryUserJobList.refetch();
-      handleEditClick(id);
+      
     });
   };
 

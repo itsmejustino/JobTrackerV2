@@ -18,10 +18,10 @@ const JobList: FC = () => {
   const editJobMutation = api.jobs.editJob.useMutation().mutateAsync;
   const userId = sessionData?.user?.id;
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
 
-  const handleEditClick = () => {
-    setIsVisible(!isVisible);
+  const handleEditClick = (jobId:string) => {
+    setSelectedJobId(jobId);
   };
   const [formData, setFormData] = useState<FormData>({
     jobName: "",
@@ -74,7 +74,7 @@ const JobList: FC = () => {
       followup,
     }).then(() => {
       queryUserJobList.refetch();
-      handleEditClick();
+      handleEditClick(id);
     });
   };
 
@@ -172,7 +172,7 @@ const JobList: FC = () => {
             </ul>
 
             <button
-              onClick={handleEditClick}
+               onClick={() => handleEditClick(x.id)}
               type="button"
               className="m-4 flex flex-row justify-center gap-2 rounded-md bg-blue-400 p-2 text-sm shadow-md transition hover:bg-blue-500"
               key={x.id}
@@ -219,8 +219,8 @@ const JobList: FC = () => {
                 />
               </svg>
             </button>
-            {isVisible && (
-              <div className="m-4 flex flex-col p-2" key={x.id}>
+            {selectedJobId === x.id && (
+              <form className="m-4 flex flex-col p-2" >
                 <span className="font-bold">Job: </span>{" "}
                 <input
                   className=" m-2 max-w-sm  rounded-xl bg-indigo-50 p-2"
@@ -315,7 +315,7 @@ const JobList: FC = () => {
                     />
                   </svg>
                 </button>
-              </div>
+              </form>
             )}
           </div>
         </div>

@@ -31,7 +31,6 @@ export const authOptions: NextAuthOptions = {
       authorization: {
         params: {
           allowDangerousEmailAccountLinking: true,
-          prompt: "select_account",
         }
       },
     })

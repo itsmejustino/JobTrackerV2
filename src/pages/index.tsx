@@ -113,7 +113,7 @@ const Home: NextPage = () => {
             </button>
           </div>
         </div>
-        
+
         <form
           className="mt-20 flex flex-row flex-wrap items-end justify-center gap-4"
           onSubmit={getInput}
@@ -212,7 +212,9 @@ const Home: NextPage = () => {
           </button>
         </form>
       </main>
-      <section className="flex justify-around flex-wrap gap-2">{<JobList />}</section>
+      <section className="flex flex-wrap justify-around gap-2">
+        {<JobList />}
+      </section>
     </>
   );
 };

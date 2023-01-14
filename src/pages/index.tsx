@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { type NextPage } from "next";
 import Head from "next/head";
 import React, { useState } from "react";
@@ -112,6 +113,7 @@ const Home: NextPage = () => {
             </button>
           </div>
         </div>
+        
         <form
           className="mt-20 flex flex-row flex-wrap items-end justify-center gap-4"
           onSubmit={getInput}

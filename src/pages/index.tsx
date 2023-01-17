@@ -71,10 +71,12 @@ const Home: NextPage = () => {
     ).then(() => {
       queryUserJobList.refetch();
       router.push("/");
+      const notify = () => {!sessionData ? toast('Here is your toast.'): null};
+      notify
     });
   };
 
-  const notify = () => {!sessionData ? toast('Here is your toast.'): null};
+  // const notify = () => {!sessionData ? toast('Here is your toast.'): null};
 
   return (
     <>
@@ -196,7 +198,6 @@ const Home: NextPage = () => {
 
           <button
             type="submit"
-            onClick={notify}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
             Add Job{" "}

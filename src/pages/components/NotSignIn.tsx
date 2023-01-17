@@ -1,6 +1,5 @@
-import React, { type FC, useEffect, useState } from "react";
+import React, { type FC } from "react";
 import { api } from "../../utils/api";
-import { useSession } from "next-auth/react";
 
 const NoSignIn: FC = () => {
  

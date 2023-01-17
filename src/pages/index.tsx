@@ -138,7 +138,7 @@ const Home: NextPage = () => {
 
           <div className="flex flex-col gap-0">
             <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-              Organization
+              Company/Organization
             </label>
             <input
               name="organization"
@@ -150,7 +150,7 @@ const Home: NextPage = () => {
 
           <div className="flex flex-col gap-0">
             <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-              Platform
+              Platform Applied On
             </label>
             <input
               name="platform"
@@ -234,6 +234,7 @@ export default Home;
 
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const myImage: any = sessionData && sessionData.user?.image;
   return (
     <div className="flex flex-col items-center justify-center gap-4">

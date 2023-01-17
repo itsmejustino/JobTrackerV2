@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { type NextPage } from "next";
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
   const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
-  const notify = () => toast('You need to be signed in to use this feature.');
+  const notify = () => toast('You need to be signed in.', {icon: '⛔'});
 
   const getInput = (e: React.FormEvent): void => {
     const userId = sessionData?.user?.id;
@@ -201,7 +201,6 @@ const Home: NextPage = () => {
             onClick={(event)=>{
               event.preventDefault();
               if(!sessionData )notify();
-           
             }}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
@@ -225,7 +224,7 @@ const Home: NextPage = () => {
       </main>
       <section className="flex flex-wrap justify-around gap-2">
         { !sessionData ? <NoSignIn/> : <JobList/>}
-        <Toaster/>
+        <Toaster />
       </section>
     </>
   );

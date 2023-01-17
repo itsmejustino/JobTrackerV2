@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
 import { signIn, signOut, useSession } from "next-auth/react";
-import toast, {Toaster} from "react-hot-toast";
 
 //1. Capture input in State object. [DONE]
 //2. Use object in State to Mutate to database. [DONE]
@@ -22,29 +21,10 @@ const Home: NextPage = () => {
   const createJobMutation = api.jobs.addJob.useMutation();
   const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
 
-  const createJob = async (
-    userId: string,
-    jobName: string,
-    company: string,
-    platform: string,
-    appliedon: string,
-    interview: string,
-    followup: string
-  ): Promise<void> => {
-    createJobMutation.mutate({
-      userId,
-      jobName,
-      company,
-      platform,
-      appliedon,
-      interview,
-      followup,
-    });
-  };
-
   const getInput = (e: React.FormEvent): void => {
+  
     const userId = sessionData?.user?.id;
-    if (!userId) return;
+    if (!userId) return notify();
     const target = e.target as typeof e.target & {
       jobName: { value: string };
       organization: { value: string };
@@ -71,12 +51,30 @@ const Home: NextPage = () => {
     ).then(() => {
       queryUserJobList.refetch();
       router.push("/");
-      const notify = () => {!sessionData ? toast('Here is your toast.'): null};
-      notify
+    });
+    
+  };
+
+  const createJob = async (
+    userId: string,
+    jobName: string,
+    company: string,
+    platform: string,
+    appliedon: string,
+    interview: string,
+    followup: string
+  ): Promise<void> => {
+    createJobMutation.mutate({
+      userId,
+      jobName,
+      company,
+      platform,
+      appliedon,
+      interview,
+      followup,
     });
   };
 
-  // const notify = () => {!sessionData ? toast('Here is your toast.'): null};
 
   return (
     <>
@@ -93,7 +91,7 @@ const Home: NextPage = () => {
         </div>
       </header>
       <main className="nav-w-3xl mx-auto my-12  bg-slate-300 p-12">
-      <Toaster/>
+    
         <div className="flex justify-around gap-3 bg-slate-400 p-3">
           <div className="flex flex-row">
             <button
@@ -198,6 +196,7 @@ const Home: NextPage = () => {
 
           <button
             type="submit"
+            onClick={()=> {if(!sessionData )alert("Please Sign in to use this feature.");}}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
             Add Job{" "}

@@ -22,9 +22,8 @@ const Home: NextPage = () => {
   const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
 
   const getInput = (e: React.FormEvent): void => {
-  
     const userId = sessionData?.user?.id;
-    if (!userId) return notify();
+    if (!userId) return;
     const target = e.target as typeof e.target & {
       jobName: { value: string };
       organization: { value: string };

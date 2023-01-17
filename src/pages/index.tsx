@@ -7,6 +7,7 @@ import { api } from "../utils/api";
 import JobList from "./components/Joblist";
 import NoSignIn from "./components/NotSignIn";
 import { signIn, signOut, useSession } from "next-auth/react";
+import toast, { Toaster } from "react-hot-toast";
 
 //1. Capture input in State object. [DONE]
 //2. Use object in State to Mutate to database. [DONE]
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
   const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
- 
+  const notify = () => toast('You need to be signed in to use this feature.');
 
   const getInput = (e: React.FormEvent): void => {
     const userId = sessionData?.user?.id;
@@ -197,8 +198,10 @@ const Home: NextPage = () => {
 
           <button
             type="submit"
-            onClick={()=>{
-              if(!sessionData )alert("Please Sign in to use this feature.");
+            onClick={(event)=>{
+              event.preventDefault();
+              if(!sessionData )notify();
+           
             }}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
@@ -222,6 +225,7 @@ const Home: NextPage = () => {
       </main>
       <section className="flex flex-wrap justify-around gap-2">
         { !sessionData ? <NoSignIn/> : <JobList/>}
+        <Toaster/>
       </section>
     </>
   );

@@ -213,7 +213,7 @@ const Home: NextPage = () => {
         </form>
       </main>
       <section className="flex flex-wrap justify-around gap-2">
-        {<JobList />}
+        {sessionData ? <JobList /> : <p>Sign in to use the app.</p>}
       </section>
     </>
   );

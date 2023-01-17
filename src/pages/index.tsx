@@ -69,7 +69,7 @@ const Home: NextPage = () => {
       followUpBool
     ).then(() => {
       queryUserJobList.refetch();
-      // router.push("/");
+      router.push("/");
     });
   };
 
@@ -213,7 +213,7 @@ const Home: NextPage = () => {
         </form>
       </main>
       <section className="flex flex-wrap justify-around gap-2">
-        {sessionData ? <JobList /> : <p>Sign in to use the app.</p>}
+        { <JobList />}
       </section>
     </>
   );

@@ -24,7 +24,6 @@ const Home: NextPage = () => {
  
 
   const getInput = (e: React.FormEvent): void => {
-    e.preventDefault();
     const userId = sessionData?.user?.id;
     if (!userId) return
     const target = e.target as typeof e.target & {

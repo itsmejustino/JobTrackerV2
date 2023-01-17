@@ -69,7 +69,7 @@ const Home: NextPage = () => {
       followUpBool
     ).then(() => {
       queryUserJobList.refetch();
-      router.push("/");
+      // router.push("/");
     });
   };
 

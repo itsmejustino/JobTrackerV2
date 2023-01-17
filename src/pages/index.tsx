@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "../utils/api";
 import JobList from "./components/Joblist";
+import NoSignIn from "./components/NotSignIn";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 //1. Capture input in State object. [DONE]
@@ -20,10 +21,12 @@ const Home: NextPage = () => {
   // Mutations and Queries for jobs to the DB
   const createJobMutation = api.jobs.addJob.useMutation();
   const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
+ 
 
   const getInput = (e: React.FormEvent): void => {
+    e.preventDefault();
     const userId = sessionData?.user?.id;
-    if (!userId) return;
+    if (!userId) return
     const target = e.target as typeof e.target & {
       jobName: { value: string };
       organization: { value: string };
@@ -195,7 +198,9 @@ const Home: NextPage = () => {
 
           <button
             type="submit"
-            onClick={()=> {if(!sessionData )alert("Please Sign in to use this feature.");}}
+            onClick={()=>{
+              if(!sessionData )alert("Please Sign in to use this feature.");
+            }}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
             Add Job{" "}
@@ -217,7 +222,7 @@ const Home: NextPage = () => {
         </form>
       </main>
       <section className="flex flex-wrap justify-around gap-2">
-        { <JobList />}
+        { !sessionData ? <NoSignIn/> : <JobList/>}
       </section>
     </>
   );

@@ -192,6 +192,11 @@ const Home: NextPage = () => {
 
           <button
             type="submit"
+            onClick={()=>{
+              if(!sessionData){
+                alert('You need to be logged in to use this feature.')
+              }
+            }}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
             Add Job{" "}

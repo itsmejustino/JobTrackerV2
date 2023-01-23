@@ -32,8 +32,8 @@ export const authOptions: NextAuthOptions = {
       allowDangerousEmailAccountLinking: true
     }),
     GoogleProvider({
-      clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET,
+      clientId: env.GOOGLE_ID,
+      clientSecret: env.GOOGLE_SECRET,
       allowDangerousEmailAccountLinking: true
     })
     // ...add more providers here

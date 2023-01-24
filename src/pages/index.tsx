@@ -200,7 +200,7 @@ const Home: NextPage = () => {
             type="submit"
             onSubmit={(event)=>{
               event.preventDefault();
-              if(!sessionData){notify();}
+              if(!sessionData?.user){notify();}
             }}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >

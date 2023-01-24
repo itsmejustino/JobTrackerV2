@@ -198,7 +198,7 @@ const Home: NextPage = () => {
 
           <button
             type="submit"
-            onSubmit={(event)=>{
+            onClick={(event)=>{
               event.preventDefault();
               !sessionData?.user ? notify() : null
             }}

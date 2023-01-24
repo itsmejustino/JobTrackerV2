@@ -199,8 +199,9 @@ const Home: NextPage = () => {
           <button
             type="submit"
             onSubmit={(event)=>{
-              event.preventDefault();
-              if(!sessionData?.user){notify();}
+              if(!sessionData?.user){
+                event.preventDefault();
+                notify();}
             }}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >

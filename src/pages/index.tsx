@@ -198,10 +198,10 @@ const Home: NextPage = () => {
 
           <button
             type="submit"
-            // onClick={(event)=>{
-            //   event.preventDefault();
-            //   if(!sessionData )notify();
-            // }}
+            onClick={(event)=>{
+              event.preventDefault();
+              if(!sessionData )notify();
+            }}
             className="flex flex-row items-center gap-2 rounded-md bg-blue-400 p-2 text-sm transition hover:bg-blue-500"
           >
             Add Job{" "}

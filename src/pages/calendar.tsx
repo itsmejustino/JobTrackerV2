@@ -63,12 +63,13 @@ const Calendar: NextPage = () => {
   </div>
 
  
- 
+ <div className="  gap-3 p-3">
  <FullCalendar
  plugins={[ dayGridPlugin ]}
  initialView="dayGridMonth"
  eventContent={renderEventContent}
 />
+</div>
 </>)
 };
 export default Calendar;

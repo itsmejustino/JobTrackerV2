@@ -15,24 +15,13 @@ const Calendar: NextPage = () => {
     const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
     const { data: sessionData } = useSession();
     const userId = sessionData?.user?.id;
-    const eventInfoQuery = queryUserJobList.data
+    const events = queryUserJobList.data
     ?.filter((job) => job.userId === userId)
-    .map((x) =>{
-        x.appliedon, x.jobName })
-
-
-    function renderEventContent(eventInfo : any) {
-        console.log(eventInfoQuery);
-       eventInfo.data = eventInfoQuery
-        return (
-          <>
-            <b>{eventInfo.data.appliedon}</b>
-            <i>{eventInfo.data.jobName}</i>
-          </>
-        )
-
-      }
-
+    .map((x) => ({
+        title: x.jobName,
+        start: x.appliedon,
+        end: x.appliedon
+    }));
  return(<>
  <div className="flex flex-row justify-end mb-2">
  <AuthShowcase/>
@@ -58,7 +47,7 @@ const Calendar: NextPage = () => {
  <FullCalendar
  plugins={[ dayGridPlugin ]}
  initialView="dayGridMonth"
- eventContent={renderEventContent}
+ eventContent={events}
 />
 </div>
 </>)

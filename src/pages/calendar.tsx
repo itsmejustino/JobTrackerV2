@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from "react";
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import { useSession } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { api } from "../utils/api";
 //1. Capture input in State object. [DONE]
 //2. Use object in State to Mutate to database. [DONE]
@@ -32,6 +32,7 @@ const Calendar: NextPage = () => {
       }
 
  return(<>
+ <AuthShowcase/>
     <div className="flex justify-around gap-3 bg-slate-400 p-3">
     <div className="flex flex-row gap-2">
       <Link
@@ -69,3 +70,29 @@ const Calendar: NextPage = () => {
 </>)
 };
 export default Calendar;
+
+const AuthShowcase: React.FC = () => {
+    const { data: sessionData } = useSession();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const myImage: any = sessionData && sessionData.user?.image;
+    return (
+      <div className="flex flex-col items-center justify-center gap-4">
+        <p className="text-center text-2xl text-white">
+          {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
+        </p>
+        {sessionData && (
+          <img
+            src={myImage}
+            alt="user avatar"
+            className="h-20 w-20 rounded-full"
+          />
+        )}
+        <button
+          className="hover:bg-slate/20 rounded-full bg-slate-700 px-10 py-3 font-semibold text-white no-underline transition"
+          onClick={sessionData ? () => signOut() : () => signIn()}
+        >
+          {sessionData ? "Sign out" : "Sign in"}
+        </button>
+      </div>
+    );
+  };

@@ -143,8 +143,7 @@ const JobList: FC = () => {
       </div>
     );
 
-  const displayJobs = queryUserJobList.data
-    ?.filter((job) => job.userId === userId)
+  const displayJobs = queryUserJobList.data?.filter((job) => job.userId === userId)
     .map((x) => {
       return (
         <div

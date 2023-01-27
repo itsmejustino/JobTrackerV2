@@ -22,6 +22,7 @@ const Calendar: NextPage = () => {
 
 
     function renderEventContent(eventInfo : any) {
+        console.log(eventInfoQuery);
        eventInfo.data = eventInfoQuery
         return (
           <>
@@ -29,6 +30,7 @@ const Calendar: NextPage = () => {
             <i>{eventInfo.data.jobName}</i>
           </>
         )
+
       }
 
  return(<>

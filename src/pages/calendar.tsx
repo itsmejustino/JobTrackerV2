@@ -15,12 +15,11 @@ const Calendar: NextPage = () => {
     const queryUserJobList = api.jobs.getAllUserJobs.useQuery();
     const { data: sessionData } = useSession();
     const userId = sessionData?.user?.id;
-    const events = queryUserJobList.data
-    ?.filter((job) => job.userId === userId)
+    const events = queryUserJobList.data?.filter((job) => job.userId === userId)
     .map((x) => ({
         title: x.jobName,
         start: x.appliedon,
-        end: x.appliedon
+        end: x.interview
     }));
  return(<>
  <div className="flex flex-row justify-end mb-2">

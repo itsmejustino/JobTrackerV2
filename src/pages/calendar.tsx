@@ -32,7 +32,9 @@ const Calendar: NextPage = () => {
       }
 
  return(<>
+ <div className="flex flex-row justify-end mb-2">
  <AuthShowcase/>
+ </div>
     <div className="flex justify-around gap-3 bg-slate-400 p-3">
     <div className="flex flex-row gap-2">
       <Link

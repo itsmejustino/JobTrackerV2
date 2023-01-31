@@ -21,7 +21,10 @@ const Calendar: NextPage = () => {
     end: x.interview,
   }));
     function renderEventContent(eventInfo: any) {
-        eventInfo = events
+      events?.forEach(x=>x.title)
+        eventInfo.title =  events?.forEach(x=>x.title);
+        eventInfo.start =  events?.forEach(x=>x.start);
+        eventInfo.end =   events?.forEach(x=>x.end);
       return (
         <>
           <b>{eventInfo.title}</b>

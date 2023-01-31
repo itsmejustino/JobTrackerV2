@@ -24,8 +24,8 @@ const Calendar: NextPage = () => {
    
       return (
         <>
-          <b>{eventInfo.start}</b>
-          <i>{eventInfo.title}</i>
+          <b>{eventInfo.events.title}</b>
+          <i>{eventInfo.events.start}</i>
         </>
       )
     }

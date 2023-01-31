@@ -21,7 +21,7 @@ const Calendar: NextPage = () => {
     end: x.interview,
   }));
     function renderEventContent(eventInfo: any) {
-   
+        eventInfo = events
       return (
         <>
           <b>{eventInfo.title.jobName}</b>

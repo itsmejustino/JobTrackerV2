@@ -30,6 +30,7 @@ const Calendar: NextPage = () => {
         </>
       )
     }
+  
 
   return (
     <>
@@ -66,7 +67,7 @@ const Calendar: NextPage = () => {
         <FullCalendar
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
-          eventContent={renderEventContent(events)}
+          eventContent={renderEventContent}
         />
       </div>
     </>

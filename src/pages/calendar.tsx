@@ -20,20 +20,18 @@ const Calendar: NextPage = () => {
     start: x.appliedon,
     end: x.interview,
   }));
-    function renderEventContent(eventInfo: any) {
-      events?.forEach(x=>x.title)
-        eventInfo.title =  events?.forEach(x=>x.title);
-        eventInfo.start =  events?.forEach(x=>x.start);
-        eventInfo.end =   events?.forEach(x=>x.end);
-      return (
-        <>
-          <b>{eventInfo.title}</b>
-          <i>{eventInfo.start}</i>
-          <i>{eventInfo.end}</i>
-        </>
-      )
-    }
-  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function renderEventContent(eventInfo:any) {
+    const { title, start, end } = eventInfo.events;
+    
+    return (
+      <>
+        <b>{title}</b>
+        <i>{start.toString()}</i>
+        <i>{end.toString()}</i>
+      </>
+    );
+  }
 
   return (
     <>

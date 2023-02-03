@@ -31,11 +31,11 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.DISCORD_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true
     }),
-    GoogleProvider({
-      clientId: env.GOOGLE_ID,
-      clientSecret: env.GOOGLE_SECRET,
-      allowDangerousEmailAccountLinking: true
-    })
+    // GoogleProvider({
+    //   clientId: env.GOOGLE_ID,
+    //   clientSecret: env.GOOGLE_SECRET,
+    //   allowDangerousEmailAccountLinking: true
+    // })
     // ...add more providers here
   ],
 };

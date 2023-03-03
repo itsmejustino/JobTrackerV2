@@ -6,7 +6,7 @@ const NoSignIn: FC = () => {
   const notSignedInQuery = api.notLoggedIn.NotSignedInMessage.useQuery();
  
 
-  return <>{notSignedInQuery.data}</>;
+  return <><div className="bg-slate-400">{notSignedInQuery.data}</div></>;
 };
 
 export default NoSignIn;

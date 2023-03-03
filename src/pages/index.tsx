@@ -90,7 +90,7 @@ const Home: NextPage = () => {
       </Head>
 
       <header className="flex content-center items-end justify-between gap-2 rounded-b-xl bg-slate-400 p-2">
-        <h2 className="m-4 text-2xl font-semibold">Applications Tracker</h2>
+        <h2 className="m-4 flex-col text-2xl font-semibold">Applications Tracker</h2>
         <div className="m-2 flex flex-col flex-wrap content-center">
           <AuthShowcase />
         </div>
